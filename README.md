@@ -1,16 +1,15 @@
 # Install Required
-pip install Flask Flask-SQLAlchemy Flask-Migrate mysqlclient python-dotenv reportlab requests pandas pytest
-pip install -U click (use for making command line in flask)
-
+    $pip install Flask Flask-SQLAlchemy Flask-Migrate mysqlclient python-dotenv reportlab requests pandas pytest click
 
 # Database migrations
-flask --app webapp db init
-flask --app webapp db migrate -m "db migrations"
-flask --app webapp db upgrade
+    $flask --app webapp db init
+    $flask --app webapp db migrate -m "db migrations"
+    $flask --app webapp db upgrade
 
 
 # Create a folder for saveing pdf file
-Folder name :- Invoices
+Folder name for pdf :- Invoices
+Folder name for csv :- CSV
 
 # Command line
 ## Show all Product :- 
