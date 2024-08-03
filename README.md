@@ -24,3 +24,6 @@ Folder name for csv :- CSV
     $python3 -m webapp.cmd returnsale --product_id <product_id> --quantity <number of quantity> --price <amount> --reason "<commant>"
 ## Invoice generate
     $python3 -m webapp.cmd generateinvoice --sale_ids <sale id>
+
+# Code testing command
+    $pytest test/test_views.py
