@@ -20,6 +20,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
+                bash -c "
                 # Activate virtual environment
                 source ${VENV_PATH}/bin/activate
                 
@@ -32,6 +33,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 sh '''
+                bash -c "
                 # Activate virtual environment
                 source ${VENV_PATH}/bin/activate
                 
