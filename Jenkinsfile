@@ -1,10 +1,6 @@
 pipeline {
     agent any
-
-    environment {
-        VENV_PATH = "${WORKSPACE}/venv"
-    }
-
+    
     stages {
         stage('Install Dependencies') {
             steps {
@@ -29,15 +25,12 @@ pipeline {
                 echo "Deployment successful"
             }
         }
-        stage('Check Logs') {
-            steps {
-                sh 'cat app.log'
-            }
-        }
     }
 
     post {
         always {
+            echo 'Checking logs...'
+            sh 'cat app.log'
             cleanWs()
         }
         success {
