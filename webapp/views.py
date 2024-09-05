@@ -13,7 +13,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    return "<h1>Hello Konfhub</h1>"
+    return "<h1>Hello Pitangent</h1>"
 
 @views.route('/add-get-products', methods = ['GET', 'POST'])
 def manage_products():

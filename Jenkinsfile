@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh '''
                 # Run Flask app
-                python3 main.py > app.log 2>&1
+                python3 main.py > app.log 2>&1 &
                 '''
             }
         }
