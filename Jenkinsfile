@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh '''
                 # Run Flask app
-                nohup python main.py > app.log 2>&1 &
+                python main.py > app.log 2>&1
                 '''
             }
         }
@@ -27,6 +27,11 @@ pipeline {
         stage('Post-deployment') {
             steps {
                 echo "Deployment successful"
+            }
+        }
+        stage('Check Logs') {
+            steps {
+                sh 'cat app.log'
             }
         }
     }
