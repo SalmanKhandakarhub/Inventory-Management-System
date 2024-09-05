@@ -6,23 +6,9 @@ pipeline {
     }
 
     stages {
-        stage('Preparation') {
-            steps {
-                script {
-                    // Create virtual environment if it doesn't exist
-                    if (!fileExists("${VENV_PATH}/bin/activate")) {
-                        sh 'python3 -m venv venv'
-                    }
-                }
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh '''
-                # Activate virtual environment
-                source ${VENV_PATH}/bin/activate
-                
                 # Install project dependencies from requirements.txt
                 pip install -r requirements.txt
                 '''
@@ -32,9 +18,6 @@ pipeline {
         stage('Run Application') {
             steps {
                 sh '''
-                # Activate virtual environment
-                source ${VENV_PATH}/bin/activate
-                
                 # Run Flask app
                 nohup python main.py > app.log 2>&1 &
                 '''
