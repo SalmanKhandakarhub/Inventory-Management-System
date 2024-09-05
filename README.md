@@ -1,5 +1,5 @@
 # Install Required
-    $pip install Flask Flask-SQLAlchemy Flask-Migrate mysqlclient python-dotenv reportlab requests pandas pytest click
+    $pip install Flask Flask-SQLAlchemy Flask-Migrate pymysql mysqlclient python-dotenv reportlab requests pandas pytest click
 
 # Database migrations
     $flask --app webapp db init
