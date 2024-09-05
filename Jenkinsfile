@@ -15,7 +15,7 @@ pipeline {
                 script {
                     // Run Flask app in the background and save the process ID
                     sh '''
-                    nohup python3 main.py > app.log 2>&1 &
+                    python3 main.py > app.log 2>&1
                     echo $! > flask_app.pid
                     '''
                 }
