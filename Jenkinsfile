@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh '''
                 # Run Flask app
-                python main.py > app.log 2>&1
+                python3 main.py > app.log 2>&1
                 '''
             }
         }
