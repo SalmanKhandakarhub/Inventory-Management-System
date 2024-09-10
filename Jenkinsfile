@@ -26,12 +26,12 @@ pipeline {
         always {
             echo 'Checking logs...'
             sh 'cat app.log'
-            script {
-                if (fileExists('flask_app.pid')) {
-                    def pid = readFile('flask_app.pid').trim()
-                    sh "kill ${pid} || true"
-                }
-            }
+            // script {
+            //     if (fileExists('flask_app.pid')) {
+            //         def pid = readFile('flask_app.pid').trim()
+            //         sh "kill ${pid} || true"
+            //     }
+            // }
             cleanWs()
         }
         success {
