@@ -19,3 +19,4 @@ typing_extensions==4.12.2
 Werkzeug==3.0.3
 pandas
 pymysql
+gunicorn
