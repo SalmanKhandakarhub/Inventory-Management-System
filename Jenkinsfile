@@ -4,27 +4,21 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh '''
-                # Install project dependencies from requirements.txt
-                pip install -r requirements.txt
-                '''
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Run Application') {
             steps {
                 script {
-                    // Run Flask app in the background and save the process ID
-                    sh '''
-                    python3 main.py > app.log 2>&1
+                    sh '''python3 main.py > app.log 2>&1 &
                     echo $! > flask_app.pid
-                    '''
+                    BUILD_ID=dontKillMe /usr/apache/bin/httpd'''
                 }
             }
         }
         stage('Post-deployment') {
             steps {
                 echo "Deployment successful"
-                // Optional: Add a sleep to allow time for the application to start
                 sleep(time: 10, unit: 'SECONDS')
             }
         }
@@ -33,11 +27,10 @@ pipeline {
         always {
             echo 'Checking logs...'
             sh 'cat app.log'
-            // Clean up Flask process if needed
             script {
                 if (fileExists('flask_app.pid')) {
                     def pid = readFile('flask_app.pid').trim()
-                    sh "kill -9 ${pid} || true"
+                    sh "kill ${pid} || true"
                 }
             }
             cleanWs()
