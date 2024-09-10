@@ -10,9 +10,8 @@ pipeline {
         stage('Run Application') {
             steps {
                 script {
-                    sh '''python3 main.py > app.log 2>&1 &
-                    echo $! > flask_app.pid
-                    BUILD_ID=dontKillMe /usr/apache/bin/httpd'''
+                    sh '''BUILD_ID=dontKillMe nohup python3 main.py > app.log 2>&1 &
+                    echo $! > flask_app.pid'''
                 }
             }
         }
